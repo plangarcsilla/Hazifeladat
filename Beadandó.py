@@ -312,3 +312,148 @@ def main():
     feladat25()
 if __name__ == '__main__':
     main()
+
+def feladat27():
+    szam=int(input())
+    poz=szam>0
+    pozdb=0
+    negdb=0
+    if szam==0:
+        return [0,0]
+    if poz:
+        pozdb=pozdb+1
+    else:
+        negdb=negdb+1
+    while True:
+        szam=int(input())
+        if szam==0:
+            break
+        if poz:
+            pozdb=pozdb+1
+            if szam>0:
+                break
+        else:
+            negdb=negdb+1
+            if szam<0:
+                break
+        poz=szam>0
+    return [pozdb,negdb]
+
+def main():
+    print(feladat27())
+if __name__ == '__main__':
+    main()
+
+
+def feladat28(n):
+    legnagyobb=0
+    for i in range(2,n-1):
+        negyzetsz=i*i
+        if negyzetsz>=n:
+            return legnagyobb
+        else:
+            legnagyobb=negyzetsz
+
+def main():
+    print(feladat28(10))
+if __name__ == '__main__':
+    main()
+
+
+def feladat29(n):
+    if n<0 or n>12:
+        return
+    eredmeny=1
+    for i in range(1,n+1):
+        eredmeny=eredmeny*i
+    return eredmeny
+
+def main():
+    print(feladat29(10))
+if __name__ == '__main__':
+    main()
+
+
+def feladat31(n):
+    osztok=[]
+    for oszto in range(1,n):
+        if n%oszto==0:
+            osztok.append(oszto)
+    return osztok
+
+def main():
+    print(feladat31(200))
+if __name__ == '__main__':
+    main()
+
+
+def feladat32(n1,n2,k):
+    szamok=[]
+    for szam in range(n1,n2):
+        if szam%k==0:
+            szamok.append(szam)
+    return szamok
+
+def main():
+    print(feladat32(2,123,40))
+if __name__ == '__main__':
+    main()
+
+def feladat33(n):
+    counter = 0
+    for x in range(1, n+1):
+        if n%x == 0:
+            counter += 1
+    return counter
+
+def legtobbOszto(n):
+    counter, number = 0, 0
+    for x in range(1, n+1):
+        if feladat33(x) > counter:
+            counter = feladat33(x)
+            number = x
+    print("A legtöbb osztóval rendelkező szám: {}, {} osztó".format(number, counter))
+
+def main():
+    print(legtobbOszto(int(input("Szám: "))))
+if __name__ == '__main__':
+    main()
+
+def feladat34(n):
+    for x in range(2, n):
+        if n%x == 0:
+            return False
+    return True
+
+def felir(n):
+    elso, masodik = 0, 0
+    if n <= 6 or n%2 != 0:
+        print("6-nál nagyobb, páros számra van szükség!")
+        return 0
+    for x in range(2, n):
+        if feladat34(x) == True:
+            elso = x
+            if feladat34(n-elso) == True:
+                masodik = n-elso
+                break
+    print("{} összege a {} és {} prímszámoknak. ".format(n, elso, masodik))
+
+def main():
+    print(felir(28))
+if __name__ == '__main__':
+    main()
+
+def feladat38(egeszszam, szamjegy):
+    str_egesz, str_szamjegy, result = "{}".format(egeszszam), "{}".format(szamjegy), 0
+    if egeszszam > 999999999:
+        print("Legfeljebb 9 számjegy megengedett!")
+        return 0
+    for x in range(len(str_egesz)):
+        if str_egesz[x] == str_szamjegy:
+            result += 1
+    print("A '{}' számban a '{}' számjegy {}x fordul elő!".format(egeszszam, szamjegy, result))
+
+def main():
+    print(feladat38(43574843, 4))
+if __name__ == '__main__':
+    main()
